@@ -1,6 +1,6 @@
 package ies.alcores.services;
 
-import ies.alcores.persistence.entities.Character;
+import ies.alcores.persistence.models.Character;
 import ies.alcores.persistence.repositories.CharacterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +25,13 @@ public class CharacterService {
     public Optional<Character> findById(final String id) {
 
         return this.characterRepository.findById(id);
+
+    }
+
+    //Crea un nuevo personaje
+    public Character create(Character c) {
+
+        return this.characterRepository.save(c);
 
     }
 

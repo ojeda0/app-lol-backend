@@ -1,4 +1,4 @@
-package ies.alcores.persistence.entities;
+package ies.alcores.persistence.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
