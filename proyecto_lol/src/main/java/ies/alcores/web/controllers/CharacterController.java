@@ -3,11 +3,11 @@ package ies.alcores.web.controllers;
 import ies.alcores.persistence.models.Character;
 import ies.alcores.services.CharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("api/characters")
@@ -31,9 +31,26 @@ public class CharacterController {
     }
 
     @PostMapping
-    public ResponseEntity<Character> create(@RequestBody Character character) {
+    public ResponseEntity<Character> create(@RequestBody final Character character) {
 
-        return Optional.ofNullable(this.characterService.save(character)).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.badRequest().build());
+        Character creado = this.characterService.create(character);
+        return ResponseEntity.status(HttpStatus.CREATED).body(creado);
+
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable final String id) {
+
+        return characterService.deleteById(id) ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
+
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Character> updateById(@PathVariable final String id, @RequestBody final Character c) {
+
+        return this.characterService.updateById(id, c)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
 
     }
 

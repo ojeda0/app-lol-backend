@@ -29,9 +29,32 @@ public class CharacterService {
     }
 
     //Crea un nuevo personaje
-    public Character create(Character c) {
+    public Character create(final Character c) {
 
         return this.characterRepository.save(c);
+
+    }
+
+    //Borra un personaje por id
+    public boolean deleteById(final String id) {
+
+        return this.characterRepository.findById(id)
+                .map(c -> {
+                    this.characterRepository.delete(c);
+                    return true;
+                })
+                .orElse(false);
+
+    }
+
+    //Actualiza un personaje
+    public Optional<Character> updateById(final String id, final Character c) {
+
+        return this.characterRepository.findById(id)
+                .map(encontrado -> {
+                    c.setId(id);
+                    return this.characterRepository.save(c);
+                });
 
     }
 
