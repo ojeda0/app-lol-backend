@@ -1,5 +1,10 @@
+springdoc:
+  swagger-ui:
+    path: /endpoints
+
 spring:
   application:
     name: proyecto_lol
-  mongodb:
-    uri: mongodb://127.0.0.1:27017/league_of_legends
+  data:
+    mongodb:
+      uri: mongodb://127.0.0.1:27017/league_of_legends
