@@ -5,6 +5,5 @@ springdoc:
 spring:
   application:
     name: proyecto_lol
-  data:
-    mongodb:
-      uri: mongodb://127.0.0.1:27017/league_of_legends
+  mongodb:
+    uri: mongodb://127.0.0.1:27017/league_of_legends
