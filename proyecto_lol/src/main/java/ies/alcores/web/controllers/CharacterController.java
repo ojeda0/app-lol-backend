@@ -55,5 +55,18 @@ public class CharacterController {
 
     }
 
+    @GetMapping("/filtro/multirol")
+    public ResponseEntity<List<Character>> findByRoles() {
+
+        List<Character> multirolCharacters = this.characterService.findByRoles();
+
+        if (multirolCharacters.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.ok(multirolCharacters);
+
+    }
+
 
 }

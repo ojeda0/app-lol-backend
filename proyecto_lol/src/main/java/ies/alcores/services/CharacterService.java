@@ -58,4 +58,11 @@ public class CharacterService {
 
     }
 
+    //Muestra los personajes con más de un rol
+    public List<Character> findByRoles() {
+
+        return this.characterRepository.findByRoles();
+
+    }
+
 }
