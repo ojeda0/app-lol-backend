@@ -65,4 +65,11 @@ public class CharacterService {
 
     }
 
+    //Muestra los personajes con el rol de tanque
+    public List<Character> findByRolesTank() {
+
+        return this.characterRepository.findByRolesTank();
+
+    }
+
 }

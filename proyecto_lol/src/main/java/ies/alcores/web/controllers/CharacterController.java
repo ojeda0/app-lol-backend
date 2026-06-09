@@ -68,5 +68,12 @@ public class CharacterController {
 
     }
 
+    @GetMapping("/tanques")
+    public ResponseEntity<List<Character>> findByRolesTank() {
+
+        return ResponseEntity.ok(this.characterService.findByRolesTank());
+
+    }
+
 
 }

@@ -11,4 +11,7 @@ public interface CharacterRepository extends MongoRepository<Character, String> 
     @Query("{ 'role.1': { $exists: true } }")
     List<Character> findByRoles();
 
+    @Query("{ 'role': 'Tank'}")
+    List<Character> findByRolesTank();
+
 }
